@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Datum</title>
+    <script>
+        function ukazDen() {
+
+//setInterval(ukazPocitadlo,1000);
+            let url = `https://nodejs-3260.rostiapp.cz/date/`;
+            fetch(url).then(function(response) {
+                response.text().then(function(text) {
+                    let obj = JSON.parse(text);
+                    document.getElementById("den").innerHTML = obj.dowcz.toLowerCase();
+                    document.getElementById("datum").innerHTML = obj.date;
+                    document.getElementById("svatek").innerHTML = obj.svatek;
+                })
+            })
+        }
+
+    </script>
+</head>
+<body onload="ukazDen()">
+Dnes je
+<b id="den">...</b>
+<b id="datum">...</b>
+a svátek má
+<b id="svatek">...</b>  .
+<input type="button" value="Aktualizuj" onclick="ukazPocitadlo()">
+<b id="pocet">...</b>
+
+<br><br>
+
+</body>
+</html>
